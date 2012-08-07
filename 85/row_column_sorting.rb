@@ -59,11 +59,20 @@ matrix_file = File.open(ARGV[0],"r").each_line do |line|
     matrix.push line.split(' ').map { |s| s.to_i}
 end
 
+transpose = matrix[0].zip *matrix[1..-1]
+
 print "Rows: "
 matrix.map do |row|
     print row.inject{|sum,x| sum + x},  ' '
 end
 
+print "\nColumns: "
+transpose.map do |column|
+    print column.inject{|sum,x| sum + x},  ' '
+end
+
+print "\n"
+#print test
 #matrix = File.readlines(ARGV[0]) do |line|
 #    line.split(" ") do |num|
 #        puts num.to_i
@@ -72,4 +81,4 @@ end
 #matrix_file.each_line{ |line|}
 #matrix = File.open(ARGV[0]).readlines { |line| puts line.split(" ")} #matrix_file.each_line{ |line|}
 #matrix = [[int(n) for n in s.split(' ')] for s  
-print "\n", matrix
+#print "\n", matrix

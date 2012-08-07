@@ -61,24 +61,13 @@ end
 
 transpose = matrix[0].zip *matrix[1..-1]
 
-print "Rows: "
-matrix.map do |row|
-    print row.inject{|sum,x| sum + x},  ' '
-end
+row_sums = matrix.map {|row| row.inject{|sum,x| sum + x} }
+column_sums = transpose.map { |column| column.inject{|sum,x| sum + x} }
 
-print "\nColumns: "
-transpose.map do |column|
-    print column.inject{|sum,x| sum + x},  ' '
-end
+print "Rows: ", row_sums.map {|r| r}.join(" ")
+print "\nColumns: ", column_sums.map {|c| c }.join(" ")
 
-print "\n"
-#print test
-#matrix = File.readlines(ARGV[0]) do |line|
-#    line.split(" ") do |num|
-#        puts num.to_i
-#    end
-#end
-#matrix_file.each_line{ |line|}
-#matrix = File.open(ARGV[0]).readlines { |line| puts line.split(" ")} #matrix_file.each_line{ |line|}
-#matrix = [[int(n) for n in s.split(' ')] for s  
-#print "\n", matrix
+matrix.sort {|x,y| row_sums[matrix.index(x)] <=> row_sums[matrix.index(y)] }.map {|r| print r }
+transpose.sort {|x,y| column_sums[transpose.index(x)] <=> column_sums[transpose.index(y)] }.map {|r| print r }
+
+

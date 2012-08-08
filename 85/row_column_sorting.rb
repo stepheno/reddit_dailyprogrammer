@@ -67,7 +67,9 @@ column_sums = transpose.map { |column| column.inject{|sum,x| sum + x} }
 print "Rows: ", row_sums.map {|r| r}.join(" ")
 print "\nColumns: ", column_sums.map {|c| c }.join(" ")
 
-matrix.sort {|x,y| row_sums[matrix.index(x)] <=> row_sums[matrix.index(y)] }.map {|r| print r }
-transpose.sort {|x,y| column_sums[transpose.index(x)] <=> column_sums[transpose.index(y)] }.map {|r| print r }
+print "\n"
+matrix.sort {|x,y| row_sums[matrix.index(x)] <=> row_sums[matrix.index(y)] }.map {|r| print "\n", *r.join(" ") }
+print "\n"
+transpose.sort {|x,y| column_sums[transpose.index(x)] <=> column_sums[transpose.index(y)] }.transpose.map {|c| print "\n", *c.join(" ") }
 
 

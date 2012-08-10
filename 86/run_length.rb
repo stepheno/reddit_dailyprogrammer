@@ -6,4 +6,8 @@
 # Write a function that takes in a string and returns a run-length-encoding of that string. (either as a list of pairs or as a 2-byte-per pair array)
 # BONUS: Write a decompression function that takes in the RLE representation and returns the original string
 
-print ARGV[0].scan(/(.)(\1*)/).reduce([]) {|arr,match| arr << [ match[1].length + 1, match[0] ]}
+def run_encode(text)
+    text.scan(/(.)(\1*)/).reduce([]) {|arr,match| arr << [ match[1].length + 1, match[0] ]}
+end
+
+print run_encode(ARGV[0])

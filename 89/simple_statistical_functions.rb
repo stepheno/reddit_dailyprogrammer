@@ -20,10 +20,7 @@ end
 
 data_set = []
 ARGF.each {|line| data_set << line.chomp.to_f }
-data_set.sort
 mean = arithmetic_mean(data_set)
 set_variance = variance(data_set,mean)
-printf "Arithmetic Mean: %f\n" , mean
-printf "Variance: %f\n" , set_variance
-printf "Standard Deviation: %f\n" , standard_dev(set_variance)
+printf "Mean: %f\nVariance: %f\nStd. Dev: %f\n", mean, set_variance, standard_dev(set_variance)
 #print data_set

@@ -10,17 +10,15 @@ def arithmetic_mean(data_set)
   data_set.reduce(:+) / data_set.length
 end
 
-def variance(data_set,mean)
+def variance(data_set)
+  mean = arithmetic_mean(data_set)
   data_set.map{|x| x - mean}.map{|x| x * x}.reduce(:+) / data_set.length
 end
 
-def standard_dev(variance)
-  Math.sqrt(variance)
+def standard_dev(data_set)
+  Math.sqrt(variance(data_set))
 end
 
 data_set = []
 ARGF.each {|line| data_set << line.chomp.to_f }
-mean = arithmetic_mean(data_set)
-set_variance = variance(data_set,mean)
-printf "Mean: %f\nVariance: %f\nStd. Dev: %f\n", mean, set_variance, standard_dev(set_variance)
-#print data_set
+printf "Mean: %f\nVariance: %f\nStd. Dev: %f\n", arithmetic_mean(data_set), variance(data_set), standard_dev(data_set)

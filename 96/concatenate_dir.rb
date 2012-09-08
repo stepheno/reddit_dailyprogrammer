@@ -20,7 +20,7 @@
 #
 
 directory = ARGV[0].nil? ? '.' : ARGV[0]
-Dir.foreach(directory) do |file|
+Dir.entries(directory).sort.each do |file|
   next if file == '.' or file == '..'
   file = directory + "/" +file
   if File.file?(file) 

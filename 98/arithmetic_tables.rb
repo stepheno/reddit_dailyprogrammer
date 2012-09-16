@@ -21,19 +21,20 @@
 #1   1   2
 #
 
-case ARGV[0]
-when "+"
-  operator ||= :+
-when "-"
-  operator ||= :-
-when "*"
-  operator ||= :*
-when "/"
-  operator ||= :/
-else
-  abort("What the hell?")
-end
-
+#case ARGV[0]
+#when "+"
+#  operator ||= :+
+#when "-"
+#  operator ||= :-
+#when "*"
+#  operator ||= :*
+#when "/"
+#  operator ||= :/
+#else
+#  abort("What the hell?")
+#end
+#
+operator = ARGV[0].to_sym
 num = ARGV[1].to_i
 print "|" + ARGV[0] 
 puts (0..num).reduce("") {|s,n| s << "|" + n.to_s }
